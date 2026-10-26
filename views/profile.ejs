@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Beginner Account</title>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="page-header text-center">
+      <h1>Eagle Eye</h1>
+      <p>Logged in as <%= user.local.email %>
+      </p>
+      <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+    </div>
+
+    <div class="row">
+
+      <!-- BALANCE -->
+      <div class="col-sm-6">
+        <div class="well">
+          <h3>Balance: $<%= balance.toFixed(2) %>
+          </h3>
+          <p>Income/Deposited: $<%= depositAmt.toFixed(2) %> | Spent/Withdrawn: $<%= purchaseAmt.toFixed(2) %>
+          </p>
+          <p>Wants: $<%= wantsTotal.toFixed(2) %> | Needs: $<%= needsTotal.toFixed(2) %>
+          </p>
+        </div>
+      </div>
+
+      <!-- Add a transaction -->
+      <div class="col-sm-6">
+        <h2>Earning or Spending?</h2>
+        <h3>Add an assignment:</h3>
+        <form action="/transactions" method="POST" class="transaction_form">
+          <section class="form_row">
+            <section class="form_group">
+              <label for="date">Date:</label>
+              <input type="date" id="date" name="date">
+            </section>
+            <section class="form_group">
+              <label for="amount">Amount:</label>
+              <input type="number" placeholder="Amount" name="amount">
+            </section>
+          </section>
+          <section class="form_group">
+            <label for="description">Description:</label>
+            <input type="text" placeholder="Description" name="description">
+          </section>
+          <section class="form_row">
+          <section class="form_group">
+            <label for="type">Type:</label>
+            <select name="type" id="">
+              <option value="income">Deposit</option>
+              <option value="expense">Purchase</option>
+            </select>
+          </section>
+          <section class="form_group">
+            <label for="kind">Kind of Purchase?:</label>
+            <select name="kind" id="">
+              <option value="">Want or Need?</option>
+              <option value="want">Want</option>
+              <option value="need">Need</option>
+            </select>
+            </section>
+            <section class="form_group">
+            <label for="category">Category</label>
+            <input type="text" placeholder="Category" name="category">
+          </section>
+          </section>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+
+      <div class="col-sm-6">
+        <h3>Transactions</h3>
+        <% if (transactions.length===0) { %>
+          <p>No transactions yet! Add your first above to begin keeping track!</p>
+          <% } %>
+            <ul class="transactions">
+              <% for(let i=0; i < transactions.length; i++) {%>
+                <li class="transaction" data-id="<%= transactions[i]._id %>">
+                  <span>
+                    <%= transactions[i].date %>
+                  </span>
+                  <span>
+                    <%= transactions[i].description %>
+                  </span>
+                  <span>
+                    <%= transactions[i].category %>
+                  </span>
+                  <% if (transactions[i].type==='income' ) { %>
+                    <span id="paycheck">+$<%= transactions[i].amount.toFixed(2) %></span>
+                    <% } else { %>
+                      <span id="spending">-$<%= transactions[i].amount.toFixed(2) %></span>
+                      <% } %>
+                        <% if (transactions[i].type==='expense' ) { %>
+                          <span>
+                            <%= transactions[i].kind %>
+                          </span>
+                          <% } %>
+                            <input type="number" class="newAmount" placeholder="New amount">
+                            <span><i class="fa fa-pencil" aria-hidden="true"></i></span>
+                            <span><i class="fa fa-times" aria-hidden="true"></i></span>
+                </li>
+                <% } %>
+            </ul>
+      </div>
+    </div>
+
+    <script src="main.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,69 @@
+body {
+  padding-top: 80px;
+  word-wrap: break-word;
+  background-color: #dee7e7;
+  color: #433e0e;
+}
+
+img {
+  height: 200px;
+}
+
+.transactions .fa {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.container .jumbotron {
+  border: 2px solid black;
+  border-radius: 10px;
+  background-color: #647aa3;
+  /* color: #332c23; */
+}
+
+.text-center {
+  color: #332c23;
+}
+
+#paycheck {
+  color: rgb(7, 224, 7);
+}
+
+#spending {
+  color: rgb(243, 50, 50);
+}
+
+.transaction_form {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 24px;
+  box-shadow: 0 2px 9px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.form-row {
+  display: flex;
+  gap: 16px;
+}
+
+.form-row .form-group {
+  flex: 1;
+}
