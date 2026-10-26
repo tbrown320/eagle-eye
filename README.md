@@ -11,7 +11,7 @@
 - **Log transactions:** record the date, amount, description, and category, and choose **Deposit** or **Purchase**.
 - **Wants vs. needs:** tag each purchase as a want or a need to build better spending habits.
 - **Live summary:** see your current balance, total deposited, total spent, and your wants and needs totals.
-- **Edit amounts:** type a new amount next to a transaction and click the ✏️ pencil.
+- **Edit amounts:** type a new amount next to a transaction and click the pencil.
 - **Delete transactions:** click the ✖ to remove one.
 - **Color-coded history:** deposits show in green (+), purchases in red (−), newest first.
 
